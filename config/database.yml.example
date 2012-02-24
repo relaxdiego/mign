@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  database: mign_development
+  username: mign
+  password: mign
+
+test:
+  adapter: postgresql
+  database: mign_test
+  username: mign
+  password: mign
+
+production:
+  adapter: postgresql
+  database: mign
+  username: mign
+  password: mign

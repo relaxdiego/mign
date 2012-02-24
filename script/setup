@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# Ensure that Bundler is installed
+if [ -z `command -v bundle` ] ; then
+    echo "Installing bundler gem..."
+    gem install bundler -v=1.0.22
+fi
+
+# Install required gems
+echo "Installing required gems..."
+bundle install --binstubs
+
+# Cleanup the logs
+rm -f log/*
+
+# Check if the databases user already exists
+# TODO will have to pull these from database.yml in the future
+export MIGN_USER='mign'
+export MIGN_PASSWORD='mign'
+
+# This is for debugging purposes only. Do not uncomment!!!
+# psql postgres -c "DROP DATABASE mign_development"
+# psql postgres -c "DROP DATABASE mign_test"
+# psql postgres -c "REVOKE ALL PRIVILEGES ON SCHEMA public from $MIGN_USER"
+# psql postgres -c "DROP ROLE $MIGN_USER"
+
+# Check for the mign database user and create if it doesn't exist
+psql postgres $MIGN_USER -c '' 2>/dev/null
+if [ $? -ne 0 ]; then
+  echo "Creating the mign database user"
+  psql postgres -c "CREATE ROLE $MIGN_USER LOGIN ENCRYPTED PASSWORD '$MIGN_PASSWORD' NOINHERIT VALID UNTIL 'infinity';" >/dev/null
+  psql postgres -c "ALTER ROLE $MIGN_USER CREATEDB;"
+else
+  echo "Mign database user exists"
+fi
+
+# Setup the database
+bundle exec rake db:setup --trace
+bundle exec rake db:migrate --trace
+
+# Restart the server (Only works with pow)
+touch tmp/restart.txt
