@@ -1,9 +1,7 @@
 Mign
 ====
-*I shall not have fear  
-I shall be just fine  
-When deadlines draw near  
-I thank God for Mign*
+*I shall not fear. I shall be fine.  
+Deadline draws near. Thank God for Mign!*
 
 Got Xcode 4.2 or above?
 -----------------------
@@ -16,6 +14,7 @@ Prerequisites
 1. `brew install git`
 2. Install RVM
 3. `rvm install 1.9.3-p125`
+4. `curl get.pow.cx | sh`
 
 Installation
 ------------

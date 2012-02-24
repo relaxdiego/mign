@@ -13,12 +13,17 @@ bundle install --binstubs
 # Cleanup the logs
 rm -f log/*
 
+# Check if database.yml exists and create it if it doesn't
+if [ ! -f config/database.yml ] ; then
+  echo "database.yml doesn't exist. Copying database.yml.example"
+  cp config/database.yml.example config/database.yml
+fi
+
 # Check if the databases user already exists
 # TODO will have to pull these from database.yml in the future
 export MIGN_USER='mign'
 export MIGN_PASSWORD='mign'
 
-# This is for debugging purposes only. Do not uncomment!!!
 # psql postgres -c "DROP DATABASE mign_development"
 # psql postgres -c "DROP DATABASE mign_test"
 # psql postgres -c "REVOKE ALL PRIVILEGES ON SCHEMA public from $MIGN_USER"
@@ -27,7 +32,7 @@ export MIGN_PASSWORD='mign'
 # Check for the mign database user and create if it doesn't exist
 psql postgres $MIGN_USER -c '' 2>/dev/null
 if [ $? -ne 0 ]; then
-  echo "Creating the mign database user"
+  echo "Creating the Mign database user"
   psql postgres -c "CREATE ROLE $MIGN_USER LOGIN ENCRYPTED PASSWORD '$MIGN_PASSWORD' NOINHERIT VALID UNTIL 'infinity';" >/dev/null
   psql postgres -c "ALTER ROLE $MIGN_USER CREATEDB;"
 else
@@ -35,8 +40,21 @@ else
 fi
 
 # Setup the database
+echo "Setting up the database"
 bundle exec rake db:setup --trace
 bundle exec rake db:migrate --trace
 
-# Restart the server (Only works with pow)
+# rm ~/.pow/mign
+
+# Add Mign to Pow if it's not already there
+if [ ! -e ~/.pow/mign ] ; then
+  echo "Adding Mign to Pow"
+  export MIGN_INSTALL_PATH=`pwd`
+  ln -s $MIGN_INSTALL_PATH ~/.pow/mign
+fi
+
+# Restart the server
+echo "Restarting Mign"
 touch tmp/restart.txt
+
+echo -e "\033[0;32mInstallation is done. Now go to http://mign.dev"
