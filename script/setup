@@ -1,4 +1,4 @@
-# !/usr/bin/env bash
+#!/usr/bin/env bash
 
 # If this variable is set to 1, it will delete databases
 # and do other destructive things. Don't do it, man!
