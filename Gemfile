@@ -23,6 +23,7 @@ group :development, :test do
   gem "spork", "~> 0.9.0"
   gem 'simplecov', :require => false
   gem 'capybara'
+  gem 'factory_girl_rails', :require => false
 end
 
 # To use ActiveModel has_secure_password

@@ -41,6 +41,7 @@ Spork.prefork do
   require 'rspec/rails'
   require 'rspec/autorun'
   require 'capybara/rspec'
+  require 'factory_girl_rails'
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
@@ -75,4 +76,7 @@ Spork.each_run do
   require 'simplecov'
   SimpleCov.start 'rails'
   SimpleCov.command_name # As suggested at https://github.com/colszowka/simplecov/issues/60#issuecomment-3911370
+
+  FactoryGirl.factories.clear
+  FactoryGirl.find_definitions
 end

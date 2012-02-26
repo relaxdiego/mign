@@ -62,7 +62,8 @@ Criteria for judging a contribution
 Helpful references for development
 ----------------------------------
 1. [Capybara DSL](http://rubydoc.info/github/jnicklas/capybara/master)
-2. [rspec-rails-2](http://rubydoc.info/gems/rspec-rails/frames)
+2. [Rspec-Rails](http://rubydoc.info/gems/rspec-rails/frames)
+3. [Factory Girl](https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md)
 
 License
 -------
