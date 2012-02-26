@@ -21,6 +21,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'rspec-rails'
   gem "spork", "~> 0.9.0"
+  gem 'simplecov', :require => false
 end
 
 # To use ActiveModel has_secure_password
