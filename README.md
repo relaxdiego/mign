@@ -26,7 +26,11 @@ Installation
 
 Usage
 -----
-1. Point your browser to `http://mign.dev`
+Point your browser to `http://mign.dev`
+
+Found a bug?
+------------
+Report it [here](https://github.com/relaxdiego/mign/issues).
 
 Getting updates
 ------------
@@ -37,21 +41,28 @@ Development
 -----------
 1. `script/spork`
 3. Open another terminal and `cd` to Mign
-4. `script/runtest`
+4. `script/runtests`
 5. Start coding using your favorite editor
+
+The tests will run in full, regenerate the code coverage report which is saved in the `coverage` directory, then pause and wait for you to make changes to to the code. When a change is detected, it will run part or all of the tests depending on which part of the code you changed, regenerate the code coverage etc etc etc. You get the point now, right?
 
 Contributing
 ------------
 1. Fork `https://github.com/relaxdiego/mign`
 2. Create a branch for whatever it is you plan to do
 3. Change stuff
-4. Send a pull request. If I like it, I will merge to the master branch
+4. Send a pull request. If I like it, I will merge to my master branch
 
 Criteria for judging a contribution
 -----------------------------------
 1. Covered by tests. Use rspec only.
 2. All tests must pass.
 3. Must come with a poem/haiku. I'm just kidding, but there's `public/poetry.yml` if you really want to. ;-)
+
+Helpful references for development
+----------------------------------
+1. [Capybara DSL](http://rubydoc.info/github/jnicklas/capybara/master)
+2. [rspec-rails-2](http://rubydoc.info/gems/rspec-rails/frames)
 
 License
 -------

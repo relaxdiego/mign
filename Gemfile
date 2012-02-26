@@ -22,6 +22,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem "spork", "~> 0.9.0"
   gem 'simplecov', :require => false
+  gem 'capybara'
 end
 
 # To use ActiveModel has_secure_password

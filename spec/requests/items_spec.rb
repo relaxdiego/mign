@@ -1,11 +1,14 @@
 require 'spec_helper'
 
-describe "Items" do
-  describe "GET /items" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get items_path
-      response.status.should be(200)
+feature "Items" do
+    background do
+      Item.create!(:subject => 'Item one')
+      Item.create!(:subject => 'Item two')
     end
-  end
+
+    scenario "Items index" do
+      visit "/items"
+      page.should have_content('Item one')
+      page.should have_content('Item two')
+    end
 end
