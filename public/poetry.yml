@@ -1,0 +1,23 @@
+# NOTE: All HTML will be stripped should Mign display your poem in the app
+
+its_mign:
+	title: "It's Mign"
+	author: "Mark S. Maglana"
+	body:
+	  - "The deadline is near"
+      "All tasks must align"
+      "Disruptions appear"
+      "Good thing I use Mign!"
+
+deadline:
+  title: "D.E.A.D.L.I.N.E."
+  author: "Editor, New Poets Press"
+  body:
+    - "Don't you think the timeline slim"
+      "Even for the highly productive"
+      "And especially for the dim;"
+      "Don't you think it's abstructive?"
+      "Limiting the time we waste"
+      "Is just a game you'll never win"
+      "No good ever came of haste"
+      "Eventually we'll work it in"

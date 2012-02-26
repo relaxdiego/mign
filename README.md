@@ -24,11 +24,14 @@ Installation
 2. `cd mign` (if RVM asks, trust the .rvmrc file)
 3. `script/setup`
 
+Usage
+-----
+1. Point your browser to `http://mign.dev`
+
 Getting updates
 ------------
 1. `git pull origin master`
 2. `script/setup`
-
 
 Development
 -----------
@@ -36,6 +39,19 @@ Development
 3. Open another terminal and `cd` to Mign
 4. `script/runtest`
 5. Start coding using your favorite editor
+
+Contributing
+------------
+1. Fork `https://github.com/relaxdiego/mign`
+2. Create a branch for whatever it is you plan to do
+3. Change stuff
+4. Send a pull request. If I like it, I will merge to the master branch
+
+Criteria for judging a contribution
+-----------------------------------
+1. Covered by tests. Use rspec only.
+2. All tests must pass.
+3. Must come with a poem/haiku. I'm just kidding, but there's `public/poetry.yml` if you really want to. ;-)
 
 License
 -------
