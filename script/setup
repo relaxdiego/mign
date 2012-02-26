@@ -27,7 +27,7 @@ if [ ! -f config/database.yml ] ; then
   cp config/database.yml.example config/database.yml
 fi
 
-# Check if the databases user already exists
+# Check if the database user already exists
 MIGN_USER=`ruby -ryaml -e "puts YAML::load(File.new('./config/database.yml'))['development']['username']"`
 MIGN_PASSWORD=`ruby -ryaml -e "puts YAML::load(File.new('./config/database.yml'))['development']['password']"`
 MIGN_DEVELOPMENT_DB=`ruby -ryaml -e "puts YAML::load(File.new('./config/database.yml'))['development']['database']"`
