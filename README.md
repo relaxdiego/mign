@@ -32,10 +32,9 @@ Getting updates
 
 Development
 -----------
-1. Open a terminal window
-2. Go to the Mign directory and run `spork`
-3. Open another terminal window
-4. Go to the Mign directory and run `script/runtest`
+1. `script/spork`
+3. Open another terminal and `cd` to Mign
+4. `script/runtest`
 5. Start coding using your favorite editor
 
 License

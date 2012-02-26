@@ -20,6 +20,7 @@ group :development, :test do
   gem 'rb-fsevent'
   gem 'guard-rspec'
   gem 'rspec-rails'
+  gem "spork", "~> 0.9.0"
 end
 
 # To use ActiveModel has_secure_password
