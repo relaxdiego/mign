@@ -46,6 +46,8 @@ Development
 
 The tests will run in full, regenerate the code coverage report which is saved in the `coverage` directory, then pause and wait for you to make changes to to the code. When a change is detected, it will run part or all of the tests depending on which part of the code you changed, regenerate the code coverage etc etc etc. You get the point now, right?
 
+Regarding the coverage report: The coverage report is supposed to be regenerated after every full run. However, due to a bug in Guard-Rspec, the coverage report is not always updated. Thus, to force a regeneration of the coverage report, go to back to the terminal where you ran `script/runtests` and hit Enter. Once [this bug](https://github.com/guard/guard-rspec/issues/94) is closed, you won't have to do this anymore.
+
 Contributing
 ------------
 1. Fork `https://github.com/relaxdiego/mign`
@@ -64,6 +66,7 @@ Helpful references for development
 1. [Capybara DSL](http://rubydoc.info/github/jnicklas/capybara/master)
 2. [Rspec-Rails](http://rubydoc.info/gems/rspec-rails/frames)
 3. [Factory Girl](https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md)
+4. [Guard](https://github.com/guard/guard)
 
 License
 -------
