@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
 
-# If --force is set in the command line, it will delete databases
-# and do other destructive things. Don't do it, man!
-
-# Laughable piece of code. Will have to learn more bash soon.
-if [ -n $1 ]; then
-  if [ $1 == "--force" ]; then
-    MIGN_FORCE_SETUP=1
-  fi
+# If --force is set in the command line, setup will delete databases
+# drop database users, and do other destructive things. Don't do it, man!
+if [ -n $1 -a $1 == "--force" ]; then
+  MIGN_FORCE_SETUP=1
 else
   MIGN_FORCE_SETUP=0
 fi
