@@ -8,11 +8,12 @@ Good thing I use Mign!*
 Prerequisites
 -------------
 1. [Mac OS X](http://www.apple.com)
-2. [PostgreSQL](www.postgresql.org/) 9.1.0+
-3. [Git](http://git-scm.com) 1.7.9+
-4. [RVM](http://beginrescueend.com/) 1.10.2+
-5. [Ruby](ruby-lang.org/) 1.9.3-p125 (Should be managed by RVM)
-6. [Pow](http://pow.cx/) 0.3.2+
+2. [Command Line Tools](https://developer.apple.com/downloads/index.action)
+3. [PostgreSQL](www.postgresql.org/) 9.1.0+
+4. [Git](http://git-scm.com) 1.7.0+
+5. [RVM](http://beginrescueend.com/) 1.10.2+
+6. [Ruby](ruby-lang.org/) 1.9.3-p125 (Should be managed by RVM)
+7. [Pow](http://pow.cx/) 0.3.2+
 
 Got Xcode 4.2 or above?
 -----------------------
@@ -46,7 +47,7 @@ Development
 
 The tests will run in full, regenerate the code coverage report which is saved in the `coverage` directory, then pause and wait for you to make changes to to the code. When a change is detected, it will run part or all of the tests depending on which part of the code you changed, regenerate the code coverage etc etc etc. You get the point now, right?
 
-Regarding the coverage report: The coverage report is supposed to be regenerated after every full run. However, due to a bug in Guard-Rspec, the coverage report is not always updated. Thus, to force a regeneration of the coverage report, go to back to the terminal where you ran `script/runtests` and hit Enter. Once [this bug](https://github.com/guard/guard-rspec/issues/94) is closed, you won't have to do this anymore.
+Regarding the coverage report: The coverage report is supposed to be regenerated after every full run. However, due to a bug in Guard-Rspec, the coverage report is not always updated. Thus, to force a regeneration of the coverage report, go back to the terminal where `script/runtests` is running and hit Enter. Once [this bug](https://github.com/guard/guard-rspec/issues/94) is closed, you won't have to do this anymore.
 
 Contributing
 ------------
