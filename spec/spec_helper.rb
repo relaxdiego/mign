@@ -74,8 +74,7 @@ end
 Spork.each_run do
   # This code will be run each time you run your specs.
   require 'simplecov'
-  SimpleCov.start 'rails'
-  SimpleCov.command_name # As suggested at https://github.com/colszowka/simplecov/issues/60#issuecomment-3911370
+  SimpleCov.start 'rails' if File.exists? 'tmp/coverage.txt'
 
   FactoryGirl.factories.clear
   FactoryGirl.find_definitions
