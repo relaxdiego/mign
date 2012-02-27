@@ -17,6 +17,19 @@ guard 'rspec', :version => 2, :all_after_pass => true do
   # Capybara request specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
 
-  callback(:run_all_begin) { `touch tmp/coverage.txt` }
-  callback(:run_all_end) { `rm tmp/coverage.txt` }
+  # Guard#start runs once right after startup
+  callback(:start_begin) { coverage }
+  callback(:start_end) { no_coverage }
+
+  # Guard#run_all runs
+  callback(:run_all_begin) { coverage }
+  callback(:run_all_end) { no_coverage }
+end
+
+def coverage
+  `touch tmp/coverage.txt`
+end
+
+def no_coverage
+  `rm tmp/coverage.txt`
 end
