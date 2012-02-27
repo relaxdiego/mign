@@ -1,12 +1,18 @@
 #!/usr/bin/env bash
 
-# If MIGN_DEBUG_SETUP is set to 1, it will delete databases
+# If --force is set in the command line, it will delete databases
 # and do other destructive things. Don't do it, man!
-if [ -z $MIGN_DEBUG_SETUP ]; then
-  MIGN_DEBUG_SETUP=0
+
+# Laughable piece of code. Will have to learn more bash soon.
+if [ -n $1 ]; then
+  if [ $1 == "--force" ]; then
+    MIGN_FORCE_SETUP=1
+  fi
+else
+  MIGN_FORCE_SETUP=0
 fi
 
-if [ $MIGN_DEBUG_SETUP -eq 1 ]; then
+if [ $MIGN_FORCE_SETUP -eq 1 ]; then
   echo -e "\033[0;31mRunning script/setup in debug mode\033[m"
 fi
 
@@ -35,7 +41,7 @@ MIGN_PASSWORD=`ruby -ryaml -e "puts YAML::load(File.new('./config/database.yml')
 MIGN_DEVELOPMENT_DB=`ruby -ryaml -e "puts YAML::load(File.new('./config/database.yml'))['development']['database']"`
 MIGN_TEST_DB=`ruby -ryaml -e "puts YAML::load(File.new('./config/database.yml'))['test']['database']"`
 
-if [ $MIGN_DEBUG_SETUP -eq 1 ]; then
+if [ $MIGN_FORCE_SETUP -eq 1 ]; then
   echo "Dropping databases and the Mign database user"
   psql postgres -c "DROP DATABASE $MIGN_DEVELOPMENT_DB"
   psql postgres -c "DROP DATABASE $MIGN_TEST_DB"
@@ -58,7 +64,7 @@ echo "Setting up the database"
 bundle exec rake db:setup --trace
 bundle exec rake db:migrate --trace
 
-if [ $MIGN_DEBUG_SETUP -eq 1 ]; then
+if [ $MIGN_FORCE_SETUP -eq 1 ]; then
   echo "Removing the mign symlink from ~/.pow"
   rm ~/.pow/mign
 fi
