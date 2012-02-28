@@ -61,6 +61,12 @@ bundle exec rake db:setup --trace
 bundle exec rake db:migrate --trace
 
 if [ $MIGN_FORCE_SETUP -eq 1 ]; then
+  echo "Restting the test and development databases"
+  RAILS_ENV=development bundle exec rake db:reset --trace
+  RAILS_ENV=test bundle exec rake db:reset --trace
+fi
+
+if [ $MIGN_FORCE_SETUP -eq 1 ]; then
   echo "Removing the mign symlink from ~/.pow"
   rm ~/.pow/mign
 fi
