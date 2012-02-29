@@ -69,6 +69,7 @@ Helpful references for development
 3. [Factory Girl](https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md) - Learn about the dynamic fixture library used in the tests.
 4. [Guard](https://github.com/guard/guard) - Learn about what files are watched (for changes) and how tests gets executed automatically.
 5. [Devise](https://github.com/plataformatec/devise) - The authentication engine used with Mign.
+6. [CanCan](https://github.com/ryanb/cancan) - The authorization gem used by Mign.
 
 License
 -------
