@@ -11,6 +11,13 @@ FactoryGirl.define do
     archived          false
     tasks_updated_at  "2012-02-29 23:51:34"
   end
+
+  factory :user do |user|
+    user.email                  "user@example.com"
+    user.password               "password"
+    user.password_confirmation  "password"
+  end
+
   factory :membership do
     user_id   { |a| a.association(:user)  }
     group_id  { |a| a.association(:group) }
