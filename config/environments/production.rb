@@ -1,6 +1,9 @@
 Mign::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  # Set this to the actual host URL of the application
+  # config.action_mailer.default_url_options = { :host => 'default url here' }
+
   # Code is not reloaded between requests
   config.cache_classes = true
 
