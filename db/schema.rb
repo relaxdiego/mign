@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120227234547) do
+ActiveRecord::Schema.define(:version => 20120229161934) do
+
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "archived"
+    t.datetime "tasks_updated_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "groups", ["archived"], :name => "index_groups_on_archived"
+  add_index "groups", ["name"], :name => "index_groups_on_name", :unique => true
 
   create_table "items", :force => true do |t|
     t.string   "subject"

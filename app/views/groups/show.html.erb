@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @group.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @group.description %>
+</p>
+
+<p>
+  <b>Archived:</b>
+  <%= @group.archived %>
+</p>
+
+<p>
+  <b>Tasks updated at:</b>
+  <%= @group.tasks_updated_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>
