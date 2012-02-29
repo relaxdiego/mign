@@ -58,5 +58,9 @@ module Mign
 
     # Uncomment this if deploying to Heroku
     # config.assets.initialize_on_precompile = false
+
+    config.generators do |g|
+      g.fixture_replacement :factory_girl
+    end
   end
 end
