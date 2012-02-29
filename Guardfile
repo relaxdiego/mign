@@ -17,6 +17,9 @@ guard 'rspec', :version => 2, :all_after_pass => true do
   # Capybara request specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
 
+  # FactoryGirl factory definitions
+  watch('spec/factories.rb')  { "spec" }
+
   # Guard#start runs once right after startup
   callback(:start_begin) { coverage }
   callback(:start_end) { no_coverage }
