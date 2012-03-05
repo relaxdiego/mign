@@ -18,15 +18,19 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :development, :test do
-  gem 'rb-fsevent'
-  gem 'guard-rspec'
-  gem 'rspec-rails'
-  gem "spork-rails"
-  gem 'simplecov', :require => false
+group :development do
   gem 'capybara'
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
   gem 'factory_girl_rails', :require => false
+  gem 'guard-cucumber'
+  gem 'guard-rspec'
+  gem 'guard-spork'
   gem 'launchy'
+  gem 'rb-fsevent'
+  gem 'rspec-rails'
+  gem 'simplecov', :require => false
+  gem 'spork-rails'
 end
 
 # To use ActiveModel has_secure_password
