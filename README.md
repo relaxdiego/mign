@@ -40,10 +40,8 @@ Getting updates
 
 Development
 -----------
-1. `script/spork`
-3. Open another terminal and `cd` to Mign
-4. `script/runtests`
-5. Start coding using your favorite editor
+1. `script/runtests`
+2. Start coding using your favorite editor
 
 The tests will run in full, regenerate the code coverage report which is saved in the `coverage` directory, then pause and wait for you to make changes to to the code. When a change is detected, it will run part or all of the tests depending on which part of the code you changed, tell you if the tests passed or failed, then wait for changes. When a change is detected...you get the point now, right?
 
@@ -58,18 +56,19 @@ Contributing
 
 Criteria for judging a contribution
 -----------------------------------
-1. Covered by tests. Use rspec only. See `spec/features` for examples.
+1. Covered by tests. Use cucumber or rspec only.
 2. All tests must pass.
 3. Must come with a poem/haiku. I'm just kidding, but there's `public/poetry.yml` if you really want to. ;-)
 
 Helpful references for development
 ----------------------------------
 1. [Capybara DSL](http://rubydoc.info/github/jnicklas/capybara/master) - Learn about the DSL used in the tests.
-2. [Rspec-Rails](http://rubydoc.info/gems/rspec-rails/frames) - Background information about the testing framework used for Mign.
-3. [Factory Girl](https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md) - Learn about the dynamic fixture library used in the tests.
-4. [Guard](https://github.com/guard/guard) - Learn about what files are watched (for changes) and how tests gets executed automatically.
-5. [Devise](https://github.com/plataformatec/devise) - The authentication engine used with Mign.
-6. [CanCan](https://github.com/ryanb/cancan) - The authorization gem used by Mign.
+2. [Cucumber](http://cukes.info) - Learn about the Cucumber framework. The Cucumber Book is highly recommended.
+3. [Rspec-Rails](http://rubydoc.info/gems/rspec-rails/frames) - Background information about the testing framework used for Mign.
+4. [Factory Girl](https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md) - Learn about the dynamic fixture library used in the tests.
+5. [Guard](https://github.com/guard/guard) - Learn about what files are watched (for changes) and how tests gets executed automatically.
+6. [Devise](https://github.com/plataformatec/devise) - The authentication engine used with Mign.
+7. [CanCan](https://github.com/ryanb/cancan) - The authorization gem used by Mign.
 
 License
 -------
