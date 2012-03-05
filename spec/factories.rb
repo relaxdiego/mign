@@ -1,3 +1,5 @@
+# NOTE: This is shared by cucumber and rspec
+
 FactoryGirl.define do
   factory :item do
     subject     "Don't forget the milk"
