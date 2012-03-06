@@ -87,8 +87,12 @@ end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
-  require 'simplecov'
-  SimpleCov.start 'rails' if File.exists? 'tmp/coverage.txt'
+  if File.exists? 'tmp/coverage.txt'
+    require 'simplecov'
+    SimpleCov.coverage_dir 'coverage/spec'
+    SimpleCov.start 'rails'
+    Dir["#{Rails.root}/app/**/**/*.rb"].each {|f| load f }
+  end
 
   FactoryGirl.factories.clear
   FactoryGirl.find_definitions
