@@ -13,3 +13,10 @@ Feature: User Authentication
     Then he should be redirected to his home page
 
 
+  Scenario Outline: User attempts to access a secure page without logging in
+    When he attempts to access <page> which is a secure page
+    Then he should be redirected to the log in page
+
+    Examples:
+      | page    |
+      | groups  |
