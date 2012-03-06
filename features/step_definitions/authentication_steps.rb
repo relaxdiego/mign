@@ -7,4 +7,6 @@ end
 
 Then /^(?:he|she) should be redirected to the groups page$/ do
   current_path.should == groups_path
+endThen /^(?:he|she) should be redirected to (?:his|her) home page$/ do
+  current_path.should == root_path
 end

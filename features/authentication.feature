@@ -11,6 +11,7 @@ Feature: User Authentication
   Scenario: User logs in with the correct credentials
     When he logs in using the correct credentials
     Then he should be redirected to the groups page
+    Then he should be redirected to his home page
 
 
   # Scenario Outline: User tries to access a secure page without logging in first
