@@ -10,7 +10,7 @@ Feature: User Authentication
   Scenario Outline: User tries to log in
     When he logs in with the following credentials: <email>, <password>
     Then he will be redirected to <page>
-     And the system will display <message>
+     And the system will display '<message>'
 
     Examples:
       | email                | password       | page  | message                   |
@@ -43,7 +43,7 @@ Feature: User Authentication
     go back to the page he was trying to access before logging in.
 
     Given he successfully logged in after being redirected from <page>
-    Then he will be redirected back to the <page>
+    Then he will be redirected to <page>
 
     Examples:
       | page   |

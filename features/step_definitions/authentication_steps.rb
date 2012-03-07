@@ -24,8 +24,8 @@ end
 Given /^a user is logged in$/ do
   steps %{
     Given the following user exists:
-      | email                | password    |
-      | relaxdiego@gmail.com | passw0rd111 |
+      | email      | password |
+      | a@user.com | 123qweqq |
      And he is logged in
   }
 end
@@ -50,20 +50,3 @@ end
 # THENs
 #==========================
 
-Then /^(?:he|she) will be redirected to (.+)$/ do |page_alias|
-  current_path.should == if page_alias == 'home' || page_alias =~ /(?:his|her|the) home page/
-                           root_path
-                         elsif page_alias == 'login' || page_alias =~ /the (?:login|log in|log-in) page/
-                           new_user_session_path
-                         else
-                           raise "unknown page alias: #{page_alias}"
-                         end
-end
-
-Then /^the system will display (.+)$/ do |message|
-  page.should have_content(message)
-end
-
-Then /^(?:he|she) will be redirected back to the (.+)$/ do |page|
-  current_path.should == eval("#{page}_path")
-end
