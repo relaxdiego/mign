@@ -24,5 +24,11 @@ class Ability
     #   can :update, Article, :published => true
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
+    user ||= User.new
+
+    can :create, Group
+    can :manage, Group do |group|
+      user.owned_groups.include?(group)
+    end
   end
 end
