@@ -12,32 +12,37 @@ Given /^the following user exists:$/ do |credentials|
             )
 end
 
-Given /^he is logged in$/ do
+Given /^(?:he|she) is logged in$/ do
   login_with :email => @user.email, :password => @user.password
 end
 
-Given /^he successfully logged in after being redirected from (.+)$/ do |page|
+Given /^(?:he|she) successfully logged in after being redirected from (.+)$/ do |page|
   visit eval("#{page}_path")
   login_with :email => @user.email, :password => @user.password
+end
+
+Given /^a user is logged in$/ do
+  steps %{
+    Given the following user exists:
+      | email                | password    |
+      | relaxdiego@gmail.com | passw0rd111 |
+     And he is logged in
+  }
 end
 
 #==========================
 # WHENs
 #==========================
 
-When /^(?:he|she) logs in using the correct credentials$/ do
-  login_with :email => @user.email, :password => @user.password
-end
-
-When /^he attempts to access (.+) which is a secure page$/ do |page|
-  visit eval("#{page}_path")
-end
-
-When /^he tries to login with these invalid credentials: (.*), (.*)$/ do |email, password|
+When /^(?:he|she) logs in with the following credentials: (.*), (.*)$/ do |email, password|
   login_with :email => email, :password => password
 end
 
-When /^he visits the log in page$/ do
+When /^(?:he|she) attempts to access (.+) without logging in first$/ do |page|
+  visit eval("#{page}_path")
+end
+
+When /^(?:he|she) visits the log in page$/ do
   visit new_user_session_path
 end
 
@@ -45,18 +50,20 @@ end
 # THENs
 #==========================
 
-Then /^(?:he|she) should be redirected to (?:his|her) home page$/ do
-  current_path.should == root_path
+Then /^(?:he|she) will be redirected to (.+)$/ do |page_alias|
+  current_path.should == if page_alias == 'home' || page_alias =~ /(?:his|her|the) home page/
+                           root_path
+                         elsif page_alias == 'login' || page_alias =~ /the (?:login|log in|log-in) page/
+                           new_user_session_path
+                         else
+                           raise "unknown page alias: #{page_alias}"
+                         end
 end
 
-Then /^he should be redirected to the log in page$/ do
-  current_path.should == new_user_session_path
-end
-
-Then /^the system should display '(.+)'$/ do |message|
+Then /^the system will display (.+)$/ do |message|
   page.should have_content(message)
 end
 
-Then /^he should be redirected back to the (.+)$/ do |page|
+Then /^(?:he|she) will be redirected back to the (.+)$/ do |page|
   current_path.should == eval("#{page}_path")
 end
