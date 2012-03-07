@@ -46,6 +46,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
+        current_user.add_to_owned_groups(@group)
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render json: @group, status: :created, location: @group }
       else
