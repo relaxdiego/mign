@@ -57,7 +57,7 @@ Contributing
 
 Criteria for judging a contribution
 -----------------------------------
-1. Covered by tests. Use cucumber or rspec only.
+1. Covered by tests. Use rspec for unit tests and cucumber for integration tests.
 2. All tests must pass.
 3. Must come with a poem/haiku. I'm just kidding, but there's `public/poetry.yml` if you really want to. ;-)
 
