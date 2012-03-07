@@ -27,7 +27,8 @@ Installation
 
 Usage
 -----
-Point your browser to `http://mign.dev`
+1. Point your browser to `http://mign.dev`
+2. Learn more about the features by opening `doc/features.html` with your favorite browser
 
 Found a bug?
 ------------
@@ -59,6 +60,11 @@ Criteria for judging a contribution
 1. Covered by tests. Use cucumber or rspec only.
 2. All tests must pass.
 3. Must come with a poem/haiku. I'm just kidding, but there's `public/poetry.yml` if you really want to. ;-)
+
+Developer Tips
+--------------
+1. Before submitting your step definitions, run `cucumber --format usage` to ensure that you are not submitting any unused step definitions.
+2. When updating doc/features.html, make sure you press `Enter` while `script/runtests` is running so that the documentation is regenerated in full.
 
 Helpful references for development
 ----------------------------------
