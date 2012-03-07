@@ -31,6 +31,7 @@ group :development do
   gem 'rspec-rails'
   gem 'simplecov', :require => false
   gem 'spork-rails'
+  gem 'syntax'
 end
 
 # To use ActiveModel has_secure_password
