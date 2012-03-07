@@ -2,14 +2,10 @@
 
 # If --force is set in the command line, setup will delete databases
 # drop database users, and do other destructive things. Don't do it, man!
-if [ -n $1 -a $1 == "--force" ]; then
-  MIGN_FORCE_SETUP=1
-else
-  MIGN_FORCE_SETUP=0
-fi
+MIGN_FORCE_SETUP=0
 
 if [ $MIGN_FORCE_SETUP -eq 1 ]; then
-  echo -e "\033[0;31mRunning script/setup in debug mode\033[m"
+  echo -e "\033[0;31mForcing script/setup!\033[m"
 fi
 
 # Ensure that Bundler is installed
