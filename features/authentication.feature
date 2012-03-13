@@ -26,9 +26,9 @@ Feature: User Authentication
     Then he will be redirected to the log in page
 
     Examples:
-      | page    |
-      | groups  |
-      | items   |
+      | page        |
+      | workspaces  |
+      | items       |
 
 
   Scenario: User tries to visit the login page when he's already logged in
@@ -46,6 +46,6 @@ Feature: User Authentication
     Then he will be redirected to <page>
 
     Examples:
-      | page   |
-      | groups |
-      | items  |
+      | page       |
+      | workspaces |
+      | items      |

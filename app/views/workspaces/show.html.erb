@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @workspace.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @workspace.description %>
+</p>
+
+<p>
+  <b>Archived:</b>
+  <%= @workspace.archived %>
+</p>
+
+<p>
+  <b>Tasks updated at:</b>
+  <%= @workspace.tasks_updated_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_workspace_path(@workspace) %> |
+<%= link_to 'Back', workspaces_path %>

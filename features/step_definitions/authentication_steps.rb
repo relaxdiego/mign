@@ -2,18 +2,15 @@
 # GIVENs
 #==========================
 
-Given /^the following user exists:$/ do |credentials|
-  attributes = credentials.hashes[0]
-  @user = Factory.create(
-            :user,
-            :email    => attributes['email'],
-            :password => attributes['password'],
-            :password_confirmation => attributes['password']
-            )
-end
-
 Given /^(?:he|she) is logged in$/ do
   login_with :email => @user.email, :password => @user.password
+end
+
+Given /^a user named (.+) is logged in$/ do |name|
+  steps %{
+    Given a user exists
+    And she is logged in
+  }
 end
 
 Given /^(?:he|she) successfully logged in after being redirected from (.+)$/ do |page|

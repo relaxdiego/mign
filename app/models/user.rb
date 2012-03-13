@@ -8,15 +8,15 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_many :memberships
-  has_many :groups, :through => :memberships
-  has_many :owned_groups,
+  has_many :workspaces, :through => :memberships
+  has_many :owned_workspaces,
            :through => :memberships,
-           :source => :group,
+           :source => :workspace,
            :conditions => ['memberships.is_owner = ?', true]
 
-  def add_to_owned_groups(group)
-    owned_groups << group
-    membership = memberships.find(:first, :conditions => ['group_id = ?', group.id])
+  def add_to_owned_workspaces(workspace)
+    owned_workspaces << workspace
+    membership = memberships.find(:first, :conditions => ['workspace_id = ?', workspace.id])
     membership.is_owner = true
     membership.save!
   end

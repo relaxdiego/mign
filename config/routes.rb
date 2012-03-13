@@ -1,9 +1,11 @@
 Mign::Application.routes.draw do
-  resources :groups
+  resources :workspaces
 
   devise_for :users
 
   resources :items
+
+  resources :memberships
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -54,7 +56,7 @@ Mign::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'groups#index'
+  root :to => 'workspaces#index'
 
   # See how all your routes lay out with "rake routes"
 
