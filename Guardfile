@@ -19,6 +19,7 @@ guard 'cucumber', :cli => "--drb --require features/", :all_after_pass => true d
   watch(%r{^features/support/.+$})                      { 'features' }
   watch(%r{^features/step_definitions/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
   watch('spec/factories.rb')                            { "cucumber" }
+  watch(%r{app/(.+)\.rb})                        { "cucumber" }
 
   # Guard#run_all runs when you hit 'Enter' in the terminal
   callback(:run_all_begin) { coverage    }
