@@ -75,6 +75,8 @@ if [ ! -e ~/.pow/mign ] ; then
   ln -s $MIGN_INSTALL_PATH ~/.pow/mign
 fi
 
+rm tmp/coverage.txt
+
 # Restart the server
 echo "Restarting Mign"
 touch tmp/restart.txt
