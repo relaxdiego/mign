@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
     membership.is_owner = true
     membership.save!
   end
+
+  def full_name
+    "#{ first_name } #{ last_name }".strip
+  end
 end
