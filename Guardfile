@@ -14,6 +14,31 @@ guard 'spork' do
   watch(%r{features/support/}) { :cucumber }
 end
 
+guard 'migrate', :reset => true do
+  watch(%r{^db/migrate/(\d+).+\.rb})
+end
+puts "Guard::Migrate is now watching .rb files under db/migrate"
+
+guard 'sass', :input => 'app/assets/stylesheets', :noop => true
+puts "Guard::Sass is now watching stylesheets in app/assets/stylesheets"
+
+# verify that application Javascript files are lintable
+# see https://github.com/psionides/jslint_on_rails
+guard 'jslint-on-rails' do
+  # watch for changes to application javascript files
+  watch(%r{^app/assets/javascripts/.*\.js$}) do |m|
+    puts "#{m[0]} changed..."
+    m[0]
+  end
+  puts "Guard::JsLintOnRails is now watching javascript files in app/assets/javascripts"
+
+  # watch for changes to the JSLint configuration
+  watch('config/jslint.yml') do |m|
+    puts "#{m[0]} changed..."
+    m[0]
+  end
+end
+
 guard 'cucumber', :cli => "--drb --require features/", :all_after_pass => true do
   watch(%r{^features/.+\.feature$})
   watch(%r{^features/support/.+$})                      { 'features' }
@@ -48,27 +73,6 @@ guard 'rspec', :version => 2, :all_after_pass => true do
   # Guard#run_all runs when you hit 'Enter' in the terminal
   callback(:run_all_begin) { coverage    }
   callback(:run_all_end)   { no_coverage }
-end
-
-guard 'migrate', :reset => true do
-  watch(%r{^db/migrate/(\d+).+\.rb})
-end
-
-guard 'sass', :input => 'app/assets/stylesheets', :noop => true
-
-# verify that application Javascript files are lintable
-# see https://github.com/psionides/jslint_on_rails
-guard 'jslint-on-rails' do
-  # watch for changes to application javascript files
-  watch(%r{^app/assets/javascripts/.*\.js$}) do |m|
-    puts "#{m[0]} changed..."
-    m[0]
-  end
-  # watch for changes to the JSLint configuration
-  watch('config/jslint.yml') do |m|
-    puts "#{m[0]} changed..."
-    m[0]
-  end
 end
 
 def coverage
