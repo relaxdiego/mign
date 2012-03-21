@@ -11,15 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120309081641) do
-
-  create_table "items", :force => true do |t|
-    t.string   "subject"
-    t.integer  "points"
-    t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
+ActiveRecord::Schema.define(:version => 20120320232106) do
 
   create_table "memberships", :force => true do |t|
     t.integer  "user_id"
@@ -29,6 +21,17 @@ ActiveRecord::Schema.define(:version => 20120309081641) do
     t.datetime "updated_at",   :null => false
     t.boolean  "is_owner"
   end
+
+  create_table "tickets", :force => true do |t|
+    t.string   "subject"
+    t.integer  "points"
+    t.string   "description"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "workspace_id"
+  end
+
+  add_index "tickets", ["workspace_id"], :name => "index_tickets_on_workspace_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

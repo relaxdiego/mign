@@ -1,12 +1,12 @@
 #==========================
 # GIVENs
 #==========================
-Given /^a workspace named (.+) exists$/ do |workspace_name|
+Given /^[Aa] workspace named (.+) exists$/ do |workspace_name|
   @workspace = Factory.create(:workspace, :name => workspace_name)
   @old_workspace_attr_values = @workspace.attributes
 end
 
-Given /^(?:he|she) owns a workspace named (.+)$/ do |workspace_name|
+Given /^(?:[Hh]e|[Ss]he) owns a workspace named (.+)$/ do |workspace_name|
   step "a workspace named #{workspace_name} exists"
   @user.add_to_owned_workspaces(@workspace)
 end

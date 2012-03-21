@@ -2,23 +2,25 @@
 # GIVENs
 #==========================
 
-Given /^(?:he|she) is logged in$/ do
+Given /^(?:[Hh]e|[Ss]he) is logged in$/ do
   login_with :email => @user.email, :password => @user.password
 end
 
-Given /^a user named (.+) is logged in$/ do |name|
+Given /^[Aa] user named (.+) is logged in$/ do |name|
   steps %{
-    Given a user exists
+    Given the following user exists:
+      | first_name | email                | password       |
+      | #{name}    | relaxdiego@gmail.com | as4943dladdsf  |
     And she is logged in
   }
 end
 
-Given /^(?:he|she) successfully logged in after being redirected from (.+)$/ do |page|
+Given /^(?:[Hh]e|[Ss]he) successfully logged in after being redirected from (.+)$/ do |page|
   visit eval("#{page}_path")
   login_with :email => @user.email, :password => @user.password
 end
 
-Given /^a user is logged in$/ do
+Given /^[Aa] user is logged in$/ do
   steps %{
     Given the following user exists:
       | email      | password |

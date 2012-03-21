@@ -1,6 +1,17 @@
 #==========================
 # GIVENs
 #==========================
+Given /^(.+) is a member of the (.+) workspace$/ do |user_name, workspace_name|
+  @user = get_user(user_name)
+  @workspace = get_workspace(workspace_name)
+  @workspace.add_member(@user)
+end
+
+Given /^(.+) is not a member of the (.+) workspace$/ do |user_name, workspace_name|
+  @user = get_user(user_name)
+  @workspace = get_workspace(workspace_name)
+  @workspace.remove_member(@user)
+end
 
 #==========================
 # WHENs

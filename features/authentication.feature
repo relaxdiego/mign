@@ -2,7 +2,7 @@ Feature: User Authentication
   This feature helps ensure that only authenticated users are able to use the application.
 
   Background:
-    Given the following user exists:
+    * The following user exists:
       | email                | password      |
       | relaxdiego@gmail.com | as4943dladdsf |
 
@@ -28,7 +28,7 @@ Feature: User Authentication
     Examples:
       | page        |
       | workspaces  |
-      | items       |
+      | tickets     |
 
 
   Scenario: User tries to visit the login page when he's already logged in
@@ -48,4 +48,4 @@ Feature: User Authentication
     Examples:
       | page       |
       | workspaces |
-      | items      |
+      | tickets    |

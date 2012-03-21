@@ -40,16 +40,16 @@ Spork.prefork do
 
   #=== This part used from http://my.rails-royce.org/2012/01/14/reloading-models-in-rails-3-1-when-usign-spork-and-cache_classes-true/
   # Use of https://github.com/sporkrb/spork/wiki/Spork.trap_method-Jujutsu
-  Spork.trap_method(Rails::Application, :reload_routes!)
-  Spork.trap_method(Rails::Application::RoutesReloader, :reload!)
+  # Spork.trap_method(Rails::Application, :reload_routes!)
+  # Spork.trap_method(Rails::Application::RoutesReloader, :reload!)
 
   # Prevent main application to eager_load in the prefork block (do not load files in autoload_paths)
-  Spork.trap_method(Rails::Application, :eager_load!)
+  # Spork.trap_method(Rails::Application, :eager_load!)
 
   # Below this line it is too late...
   require File.expand_path("../../config/environment", __FILE__)
   # Load all railties files
-  Rails.application.railties.all { |r| r.eager_load! }
+  # Rails.application.railties.all { |r| r.eager_load! }
   #===
 
   require 'rspec/rails'

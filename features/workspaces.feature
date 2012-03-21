@@ -2,7 +2,7 @@ Feature: Workspace Management
   This feature allows authorized users to manage their workspaces
 
   Background:
-    Given a user named Amanda Jackson is logged in
+    * A user named Amanda Jackson is logged in
 
 
   Scenario: Create a workspace

@@ -2,7 +2,7 @@ Feature: Membership Management
   This feature allows authorized users to add members to their workspace
 
   Background:
-    Given a user named Joel is logged in
+    * A user named Joel is logged in
 
   Scenario: Add a member to a workspace that he owns
     Given he owns a workspace named Marketing Department
