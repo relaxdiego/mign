@@ -1,35 +1,37 @@
 <h2>Log in to Mign</h2>
 
-<%= form_for(resource,
-             :as   => resource_name,
-             :url  => session_path(resource_name),
-             :html => { :class => 'form-horizontal' }) do |f| %>
-  <div class="control-group">
-    <%= f.label :email, :class => "control-label" %>
-    <div class="controls"><%= f.email_field :email %></div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :password, :class => "control-label" %>
-    <div class="controls"><%= f.password_field :password %></div>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
+<div class="span5 offset3">
+  <%= form_for(resource,
+               :as   => resource_name,
+               :url  => session_path(resource_name),
+               :html => { :class => 'form-horizontal' }) do |f| %>
     <div class="control-group">
-      <div class="controls">
-        <label class="checkbox">
-          <%= f.check_box :remember_me %>
-          Remember me
-        </label>
-      </div>
+      <%= f.label :email, :class => "control-label" %>
+      <div class="controls"><%= f.email_field :email %></div>
     </div>
-  <% end -%>
 
-  <div class="form-actions">
-    <%= f.submit "Log in", :id => "login", :class => "btn btn-primary" %>
+    <div class="control-group">
+      <%= f.label :password, :class => "control-label" %>
+      <div class="controls"><%= f.password_field :password %></div>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+      <div class="control-group">
+        <div class="controls">
+          <label class="checkbox">
+            <%= f.check_box :remember_me %>
+            Remember me
+          </label>
+        </div>
+      </div>
+    <% end -%>
+
+    <div class="form-actions">
+      <%= f.submit "Log in", :id => "login", :class => "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <div id="other-links">
+    <%= render "links" %>
   </div>
-<% end %>
-
-<div id="other-links">
-  <%= render "links" %>
 </div>
