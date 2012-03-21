@@ -8,9 +8,15 @@
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<div class="container">
+<% if notice %>
+<div class="alert alert-success"><%= notice %></div>
+<% elsif alert %>
+<div class="alert alert-error"><%= alert %></div>
+<% end %>
+
 <%= yield %>
+</div>
 
 </body>
 </html>
