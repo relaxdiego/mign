@@ -1,7 +1,10 @@
-a {
-  text-decoration: underline;
+.container {
+  padding: 10px;
+  a {
+    text-decoration: underline;
 
-  &:hover {
-    background-color: inherit;
+    &:hover {
+      background-color: inherit;
+    }
   }
 }
