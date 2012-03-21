@@ -13,10 +13,6 @@ Given /^[Tt]he following user exists:$/ do |credentials|
             )
 end
 
-Given /^[Aa] user exists$/ do
-  @user = Factory.create(:user)
-end
-
 Given /^(?:[Hh]e|[Ss]he) has an (?:officemate|teammate) named (.+)$/ do |name|
   Factory.create(:user, :first_name => name, :email => "#{name}@email.com")
   other_user = User.find_by_first_name(name)

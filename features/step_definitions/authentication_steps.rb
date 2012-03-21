@@ -20,15 +20,6 @@ Given /^(?:[Hh]e|[Ss]he) successfully logged in after being redirected from (.+)
   login_with :email => @user.email, :password => @user.password
 end
 
-Given /^[Aa] user is logged in$/ do
-  steps %{
-    Given the following user exists:
-      | email      | password |
-      | a@user.com | 123qweqq |
-     And he is logged in
-  }
-end
-
 #==========================
 # WHENs
 #==========================
