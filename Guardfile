@@ -54,6 +54,23 @@ guard 'migrate', :reset => true do
   watch(%r{^db/migrate/(\d+).+\.rb})
 end
 
+guard 'sass', :input => 'app/assets/stylesheets', :noop => true
+
+# verify that application Javascript files are lintable
+# see https://github.com/psionides/jslint_on_rails
+guard 'jslint-on-rails' do
+  # watch for changes to application javascript files
+  watch(%r{^app/assets/javascripts/.*\.js$}) do |m|
+    puts "#{m[0]} changed..."
+    m[0]
+  end
+  # watch for changes to the JSLint configuration
+  watch('config/jslint.yml') do |m|
+    puts "#{m[0]} changed..."
+    m[0]
+  end
+end
+
 def coverage
   `touch tmp/coverage.txt`
 end
@@ -63,4 +80,3 @@ def no_coverage
     `rm tmp/coverage.txt`
   end
 end
-
