@@ -1,7 +1,7 @@
 # NOTE: This is shared by cucumber and rspec
 
 FactoryGirl.define do
-  factory :item do
+  factory :ticket do
     subject     "Don't forget the milk"
     points      3
     description "Buy milk from the grocery before going home."
