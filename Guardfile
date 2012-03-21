@@ -50,6 +50,10 @@ guard 'rspec', :version => 2, :all_after_pass => true do
   callback(:run_all_end)   { no_coverage }
 end
 
+guard 'migrate', :reset => true do
+  watch(%r{^db/migrate/(\d+).+\.rb})
+end
+
 def coverage
   `touch tmp/coverage.txt`
 end
@@ -59,3 +63,4 @@ def no_coverage
     `rm tmp/coverage.txt`
   end
 end
+
