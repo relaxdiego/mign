@@ -1,10 +1,10 @@
-<%= form_for(@item) do |f| %>
-  <% if @item.errors.any? %>
+<%= form_for(@ticket) do |f| %>
+  <% if @ticket.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+      <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
 
       <ul>
-      <% @item.errors.full_messages.each do |msg| %>
+      <% @ticket.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -26,4 +26,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+  <%= f.hidden_field :workspace_id %>
 <% end %>

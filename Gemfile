@@ -26,6 +26,7 @@ group :development do
   gem 'guard-cucumber'
   gem 'guard-rspec'
   gem 'guard-spork'
+  gem 'guard-migrate'
   gem 'launchy'
   gem 'rb-fsevent'
   gem 'rspec-rails'

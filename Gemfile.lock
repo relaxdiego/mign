@@ -83,6 +83,8 @@ GEM
     guard-cucumber (0.7.5)
       cucumber (>= 0.10)
       guard (>= 0.8.3)
+    guard-migrate (0.1.0)
+      guard (>= 0.2.2)
     guard-rspec (0.6.0)
       guard (>= 0.10.0)
     guard-spork (0.5.2)
@@ -198,6 +200,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   guard-cucumber
+  guard-migrate
   guard-rspec
   guard-spork
   jquery-rails
