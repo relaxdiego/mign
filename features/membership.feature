@@ -7,7 +7,7 @@ Feature: Membership Management
   Scenario: Add a member to a workspace that he owns
     Given he owns a workspace named Marketing Department
       And he has an officemate named Joey
-     When he tries to add Joey as a member to her workspace
+     When he tries to make Joey a member of said workspace
      Then Joey will be a member of that workspace
       And the system will display 'Joey is now a member of the Marketing Department workspace'
 
@@ -15,5 +15,5 @@ Feature: Membership Management
   Scenario: Add a member to a workspace that he doesn't own
     Given a workspace named Sales Department exists
       And he has an officemate named George
-     When he tries to add George as a member to that workspace
+     When he tries to make George a member of said workspace
      Then the system will display 'You are not allowed to do that'

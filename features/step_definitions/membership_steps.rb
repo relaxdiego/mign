@@ -17,7 +17,7 @@ end
 # WHENs
 #==========================
 
-When /^(?:he|she) tries to add (.+) as a member to (?:her|that) workspace$/ do |name|
+When /^(?:he|she) tries to make (.+) a member of said workspace$/ do |name|
   new_member = get_user(name)
   visit new_membership_path
 
