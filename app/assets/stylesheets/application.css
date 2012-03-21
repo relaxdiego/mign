@@ -10,7 +10,7 @@
  *
  *= require_self
  *= require scaffolds
- *= require common
  *= require bootstrap.min
  *= require bootstrap-responsive.min
+ *= require common
 */
