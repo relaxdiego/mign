@@ -9,6 +9,7 @@ Feature: Manage Workspaces
     When she creates a workspace named Sales Department
     Then she will be an owner of that workspace
      And she will be redirected to the workspaces page
+     And the system will display 'Workspace Sales Department was successfully created'
 
 
   Scenario: Edit a workspace that she owns
