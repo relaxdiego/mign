@@ -1,4 +1,4 @@
-Feature: Workspace Management
+Feature: Manage Workspaces
   This feature allows authorized users to manage their workspaces
 
   Background:
@@ -8,6 +8,7 @@ Feature: Workspace Management
   Scenario: Create a workspace
     When she creates a workspace named Sales Department
     Then she will be an owner of that workspace
+     And she will be redirected to the workspaces page
 
 
   Scenario: Edit a workspace that she owns

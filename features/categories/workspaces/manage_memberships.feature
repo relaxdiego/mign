@@ -1,4 +1,4 @@
-Feature: Membership Management
+Feature: Manage Memberships
   This feature allows authorized users to add members to their workspace
 
   Background:

@@ -1,4 +1,4 @@
-Feature: Ticket Management
+Feature: Manage Tickets
 
   Background:
     * A workspace named Installation Department exists

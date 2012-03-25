@@ -1,4 +1,4 @@
-Feature: User Authentication
+Feature: Logging In
   This feature helps ensure that only authenticated users are able to use the application.
 
   Background:
@@ -9,7 +9,7 @@ Feature: User Authentication
 
   Scenario Outline: User tries to log in
     When he logs in with the following credentials: <email>, <password>
-    Then he will be redirected to <page>
+    Then he will be redirected to the <page> page
      And the system will display '<message>'
 
     Examples:
@@ -43,7 +43,7 @@ Feature: User Authentication
     go back to the page he was trying to access before logging in.
 
     Given he successfully logged in after being redirected from <page>
-    Then he will be redirected to <page>
+    Then he will be redirected to the <page> page
 
     Examples:
       | page       |
