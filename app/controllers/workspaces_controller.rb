@@ -9,7 +9,7 @@ class WorkspacesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @workspaces }
+      # format.json { render json: @workspaces }
     end
   end
 
@@ -18,7 +18,7 @@ class WorkspacesController < ApplicationController
   def show
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @workspace }
+      # format.json { render json: @workspace }
     end
   end
 
@@ -27,7 +27,7 @@ class WorkspacesController < ApplicationController
   def new
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @workspace }
+      # format.json { render json: @workspace }
     end
   end
 
@@ -43,10 +43,10 @@ class WorkspacesController < ApplicationController
       if @workspace.save
         current_user.add_to_owned_workspaces(@workspace)
         format.html { redirect_to workspaces_path, notice: 'Group was successfully created.' }
-        format.json { render json: @workspace, status: :created, location: @workspace }
+        # format.json { render json: @workspace, status: :created, location: @workspace }
       else
         format.html { render action: "new" }
-        format.json { render json: @workspace.errors, status: :unprocessable_entity }
+        # format.json { render json: @workspace.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,10 +57,10 @@ class WorkspacesController < ApplicationController
     respond_to do |format|
       if @workspace.update_attributes(params[:workspace])
         format.html { redirect_to @workspace, notice: 'Group was successfully updated.' }
-        format.json { head :no_content }
+        # format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @workspace.errors, status: :unprocessable_entity }
+        # format.json { render json: @workspace.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -72,7 +72,7 @@ class WorkspacesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to workspaces_url }
-      format.json { head :no_content }
+      # format.json { head :no_content }
     end
   end
 end
