@@ -13,7 +13,7 @@ Feature: View Workspaces
       | IT Department        |
       | Product Quality Team |
 
-  Scenario:
+  Scenario: View workspaces page
     When he visits the workspaces page
     Then he should see the following workspaces
       | Name                 |

@@ -93,10 +93,3 @@ Then /^(?:[Hh]e|[Ss]he) should not see the other workspaces$/ do
     page.should have_no_content(workspace[:name])
   end
 end
-
-Then /^(?:he|she) will see the tickets in that workspace$/ do
-  @workspace.tickets.reload
-  @workspace.tickets.each do |ticket|
-    page.should have_content(ticket[:subject])
-  end
-end

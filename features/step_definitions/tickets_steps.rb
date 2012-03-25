@@ -43,3 +43,11 @@ Then /^the ticket should not be created$/ do
   @ticket = get_ticket(@new_ticket_attrs['Subject'])
   @ticket.should be_nil
 end
+
+Then /^(?:he|she) will see the following tickets$/ do |table|
+  tickets = table.hashes
+
+  tickets.each do |ticket|
+    page.should have_content(ticket['Subject'])
+  end
+end
