@@ -20,6 +20,11 @@
   <%= @workspace.tasks_updated_at %>
 </p>
 
-
 <%= link_to 'Edit', edit_workspace_path(@workspace) %> |
 <%= link_to 'Back', workspaces_path %>
+
+<div id="tickets">
+  <% @workspace.tickets.each do |ticket| %>
+    <%= ticket.subject %>
+  <% end %>
+</div>

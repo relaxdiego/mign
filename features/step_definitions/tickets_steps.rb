@@ -1,4 +1,20 @@
 #==========================
+# GIVENs
+#==========================
+
+Given /^That workspace has the following tickets$/ do |table|
+  tickets = table.hashes
+
+  tickets.each do |ticket|
+    attrs = {}
+    attrs[:workspace_id] = @workspace.id
+    attrs[:subject] = ticket['Subject']
+    attrs[:points] = ticket['Points'] if ticket['Points']
+    Factory.create(:ticket, attrs)
+  end
+end
+
+#==========================
 # WHENs
 #==========================
 When /^(?:he|she) tries to create the following ticket in that workspace:$/ do |table|

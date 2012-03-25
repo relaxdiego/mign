@@ -1,6 +1,7 @@
 class Workspace < ActiveRecord::Base
   has_many :memberships
   has_many :members, :through => :memberships, :source => :user
+  has_many :tickets
 
   def owner
     memberships.select{ |m| m.is_owner }[0] || User.new

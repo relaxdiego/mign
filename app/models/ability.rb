@@ -29,6 +29,10 @@ class Ability
       user.owned_workspaces.include?(workspace)
     end
 
+    can :read, Workspace do |workspace|
+      workspace.members.include?(user)
+    end
+
     can :create, Membership do |membership|
       if membership.workspace_id.nil?
         # The user is trying to access the form

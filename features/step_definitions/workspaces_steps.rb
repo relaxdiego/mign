@@ -55,6 +55,10 @@ When /^(?:[Hh]e|[Ss]he) visits the workspaces page$/ do
   visit workspaces_path
 end
 
+When /^(?:he|she) tries to view that workspace$/ do
+  visit workspace_path(@workspace)
+end
+
 #==========================
 # THENs
 #==========================
@@ -87,5 +91,12 @@ Then /^(?:[Hh]e|[Ss]he) should not see the other workspaces$/ do
   excluded_workspaces.each do |workspace|
     next if @visible_workspace_names.include?(workspace[:name])
     page.should have_no_content(workspace[:name])
+  end
+end
+
+Then /^(?:he|she) will see the tickets in that workspace$/ do
+  @workspace.tickets.reload
+  @workspace.tickets.each do |ticket|
+    page.should have_content(ticket[:subject])
   end
 end

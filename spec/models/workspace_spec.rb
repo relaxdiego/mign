@@ -32,4 +32,9 @@ describe Workspace do
 
     workspace.remove_member(user).should be_true
   end
+
+  it "should have the tickets association method" do
+    workspace = Factory.create(:workspace)
+    workspace.respond_to?('tickets').should be_true
+  end
 end
