@@ -1,4 +1,4 @@
-Feature: Manage Tickets
+Feature: Create a Ticket
 
   Background:
     * A workspace named Installation Department exists
@@ -7,10 +7,11 @@ Feature: Manage Tickets
   Scenario: Create a ticket
     Given Oscar is a member of the Installation Department workspace
      When he tries to create a ticket in that workspace
-     Then the ticket should be created under the workspace
+     Then the ticket should be created under that workspace
       And the system will display 'Ticket was successfully created'
 
-  Scenario: User is not a member of the workspace
+
+  Scenario: Unauthorized ticket creation
     Given Oscar is not a member of the Installation Department workspace
      When he tries to create a ticket in that workspace
      Then the ticket should not be created
