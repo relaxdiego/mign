@@ -5,7 +5,7 @@ class WorkspacesController < ApplicationController
   # GET /workspaces
   # GET /workspaces.json
   def index
-    @workspaces = Workspace.all
+    @workspaces = current_user.workspaces
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,7 +42,7 @@ class WorkspacesController < ApplicationController
     respond_to do |format|
       if @workspace.save
         current_user.add_to_owned_workspaces(@workspace)
-        format.html { redirect_to @workspace, notice: 'Group was successfully created.' }
+        format.html { redirect_to workspaces_path, notice: 'Group was successfully created.' }
         format.json { render json: @workspace, status: :created, location: @workspace }
       else
         format.html { render action: "new" }
