@@ -49,7 +49,10 @@ Then /^(?:he|she) should be logged out$/ do
   # way to tell that the user is logged out. Maybe
   # check the sessions database??
   page.should have_no_selector('#logout')
-  page.should have_content('Signed out successfully.')
+end
+
+Then /^the system should display '(.+)'$/ do |message|
+    page.should have_content(message)
 end
 
 Then /^he should see the log in page$/ do
