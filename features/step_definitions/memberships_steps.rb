@@ -13,6 +13,10 @@ Given /^(.+) is not a member of the (.+) workspace$/ do |user_name, workspace_na
   @workspace.remove_member(@user)
 end
 
+Given /^(?:[Hh]e|[Ss]he) is a member of that workspace$/ do
+  @workspace.add_member @user
+end
+
 #==========================
 # WHENs
 #==========================
