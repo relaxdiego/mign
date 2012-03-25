@@ -15,7 +15,9 @@
 <% elsif alert %>
 <div class="alert alert-error"><%= alert %></div>
 <% end %>
-
+<% if user_signed_in? # user_signed_in? is a Devise helper method %>
+  <%= button_to 'Log out', destroy_user_session_path, :method => :delete, :id => 'logout' %>
+<% end %>
 <%= yield %>
 </div>
 

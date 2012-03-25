@@ -36,7 +36,23 @@ When /^(?:he|she) visits the log in page$/ do
   visit new_user_session_path
 end
 
+When /^(?:he|she) tries to log out$/ do
+  click_on 'logout'
+end
+
 #==========================
 # THENs
 #==========================
 
+Then /^(?:he|she) should be logged out$/ do
+  # Need to improve this. There should be a better
+  # way to tell that the user is logged out. Maybe
+  # check the sessions database??
+  page.should have_no_selector('#logout')
+  page.should have_content('Signed out successfully.')
+end
+
+Then /^he should see the log in page$/ do
+  page.should have_field('user_email')
+  page.should have_field('user_password')
+end
