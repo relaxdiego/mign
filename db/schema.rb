@@ -59,9 +59,8 @@ ActiveRecord::Schema.define(:version => 20120320232106) do
     t.string   "name"
     t.text     "description"
     t.boolean  "archived"
-    t.datetime "tasks_updated_at"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   add_index "workspaces", ["archived"], :name => "index_workspaces_on_archived"

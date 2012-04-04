@@ -4,7 +4,6 @@ class CreateWorkspaces < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.boolean :archived
-      t.datetime :tasks_updated_at
 
       t.timestamps
     end

@@ -31,6 +31,7 @@ end
 # THENs
 #==========================
 Then /^the ticket should be created under that workspace$/ do
+  @workspace.reload
   @ticket = get_ticket(@new_ticket_attrs['Subject'])
   @ticket.workspace.attributes.should == @workspace.attributes
 end
