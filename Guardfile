@@ -15,7 +15,10 @@ guard 'spork' do
 end
 
 guard 'migrate', :reset => true do
-  watch(%r{^db/migrate/(\d+).+\.rb})
+  watch(%r{^db/migrate/(\d+).+\.rb}) do |m|
+    puts "#{m[0]} changed..."
+    m[0]
+  end
 end
 puts "Guard::Migrate is now watching .rb files under db/migrate"
 
