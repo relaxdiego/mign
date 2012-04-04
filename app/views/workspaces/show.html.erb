@@ -10,7 +10,7 @@
 
 <ul id="tickets">
   <% @workspace.tickets.all(:order => :created_at).each do |ticket| %>
-    <li><%= ticket.subject %></li>
+    <li><%= link_to ticket.subject, ticket %></li>
   <% end %>
   <%= render :partial => 'tickets/form' %>
 </ul>
