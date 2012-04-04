@@ -2,15 +2,12 @@
 # GIVENs
 #==========================
 
-Given /^[Tt]he following user exists:$/ do |credentials|
-  attributes = credentials.hashes[0]
-  @user = Factory.create(
-            :user,
-            :email    => attributes['email'],
-            :password => attributes['password'],
-            :password_confirmation => attributes['password'],
-            :first_name => attributes['first_name'] || ''
-            )
+Given /^[Aa] user exists$/ do
+  @user = create_user
+end
+
+Given /^[Aa] user with the following credentials exists:$/ do |credentials|
+  @user = create_user(credentials.hashes[0])
 end
 
 Given /^(?:[Hh]e|[Ss]he) has an (?:officemate|teammate) named (.+)$/ do |name|

@@ -2,33 +2,33 @@
 # GIVENs
 #==========================
 
-Given /^(?:[Hh]e|[Ss]he) is logged in$/ do
-  login_with :email => @user.email, :password => @user.password
+Given /^[Aa] user is logged in$/ do
+  @user = create_user
+  login @user
 end
 
 Given /^[Aa] user named (.+) is logged in$/ do |name|
-  steps %{
-    Given the following user exists:
-      | first_name | email                | password       |
-      | #{name}    | relaxdiego@gmail.com | as4943dladdsf  |
-    And she is logged in
-  }
+  @user = create_user(:first_name => name)
+  login @user
 end
 
 Given /^(?:[Hh]e|[Ss]he) successfully logged in after being redirected from (.+)$/ do |page|
   visit eval("#{page}_path")
-  login_with :email => @user.email, :password => @user.password
+  login @user
 end
 
 #==========================
 # WHENs
 #==========================
 
-When /^(?:he|she) logs in with the following credentials: (.*), (.*)$/ do |email, password|
-  login_with :email => email, :password => password
+When /^someone attempts to log in with the following credentials: (.*), (.*)$/ do |email, password|
+  visit new_user_session_path
+  fill_in       'user_email',    :with => email
+  fill_in       'user_password', :with => password
+  click_button  'login'
 end
 
-When /^(?:he|she) attempts to access (.+) without logging in first$/ do |page|
+When /^(?:he|she|someone) attempts to access (.+) without logging in first$/ do |page|
   visit eval("#{page}_path")
 end
 
@@ -38,6 +38,12 @@ end
 
 When /^(?:he|she) tries to log out$/ do
   click_on 'logout'
+end
+
+When /^(?:he|she) logs in$/ do
+  fill_in       'user_email',    :with => @user.email
+  fill_in       'user_password', :with => @user.password
+  click_button  'login'
 end
 
 #==========================
@@ -52,7 +58,7 @@ Then /^(?:he|she) should be logged out$/ do
 end
 
 Then /^the system should display '(.+)'$/ do |message|
-    page.should have_content(message)
+  page.should have_content(message)
 end
 
 Then /^he should see the log in page$/ do
