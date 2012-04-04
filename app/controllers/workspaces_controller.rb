@@ -16,6 +16,7 @@ class WorkspacesController < ApplicationController
   # GET /workspaces/1
   # GET /workspaces/1.json
   def show
+    @ticket = Ticket.new(:workspace_id => @workspace.id)
     respond_to do |format|
       format.html # show.html.erb
       # format.json { render json: @workspace }

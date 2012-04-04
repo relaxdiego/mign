@@ -21,8 +21,6 @@ When /^(?:he|she) tries to create a ticket in that workspace$/ do
   @new_ticket_attrs = Factory.build(:ticket).attributes
   visit workspace_path(@workspace)
 
-  click_on 'create_ticket' unless page.has_no_selector?('#create_ticket')
-
   if page.has_field? 'ticket_subject'
     fill_in 'ticket_subject', :with => @new_ticket_attrs['subject']
     click_on 'create_ticket'

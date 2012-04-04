@@ -8,7 +8,6 @@ Feature: Create a Ticket
     Given Oscar is a member of the Installation Department workspace
      When he tries to create a ticket in that workspace
      Then the ticket should be created under that workspace
-      And the system will display 'Ticket was successfully created'
 
 
   Scenario: Unauthorized ticket creation

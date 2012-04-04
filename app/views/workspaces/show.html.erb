@@ -1,32 +1,16 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
+<h1>
   <%= @workspace.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @workspace.description %>
-</p>
-
-<p>
-  <b>Archived:</b>
-  <%= @workspace.archived %>
-</p>
-
-<p>
-  <b>Tasks updated at:</b>
-  <%= @workspace.tasks_updated_at %>
-</p>
+  <small><%= @workspace.description %></small>
+</h1>
 
 <%= link_to 'Edit', edit_workspace_path(@workspace) %> |
 <%= link_to 'Back', workspaces_path %>
 
-<div id="tickets">
-  <% @workspace.tickets.each do |ticket| %>
-    <%= ticket.subject %>
-  <% end %>
-</div>
+<h2>Tickets</h2>
 
-<%= link_to 'New Ticket', new_workspace_ticket_path(@workspace), :id => 'create_ticket' %>
+<ul id="tickets">
+  <% @workspace.tickets.all(:order => :created_at).each do |ticket| %>
+    <li><%= ticket.subject %></li>
+  <% end %>
+  <%= render :partial => 'tickets/form' %>
+</ul>
