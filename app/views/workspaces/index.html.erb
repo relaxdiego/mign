@@ -1,29 +1,16 @@
-<h1>Listing workspaces</h1>
+<h1>My Workspaces</h1>
 
-<table>
+<table class="table table-bordered">
   <tr>
     <th>Name</th>
-    <th>Description</th>
-    <th>Archived</th>
-    <th>Tasks updated at</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Last updated</th>
   </tr>
-
 <% @workspaces.each do |workspace| %>
   <tr>
-    <td><%= workspace.name %></td>
-    <td><%= workspace.description %></td>
-    <td><%= workspace.archived %></td>
+    <td><%= link_to workspace.name, workspace %></td>
     <td><%= workspace.tasks_updated_at %></td>
-    <td><%= link_to 'Show', workspace %></td>
-    <td><%= link_to 'Edit', edit_workspace_path(workspace) %></td>
-    <td><%= link_to 'Destroy', workspace, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Group', new_workspace_path %>
+<%= link_to 'New Workspace', new_workspace_path %>
