@@ -33,6 +33,7 @@ group :development do
   gem 'launchy'
   gem 'rb-fsevent'
   gem 'rspec-rails'
+  gem 'shoulda'
   gem 'simplecov', :require => false
   gem 'spork-rails'
   gem 'syntax'

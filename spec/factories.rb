@@ -5,16 +5,26 @@ FactoryGirl.define do
     subject     "Don't forget the milk"
     points      3
     description "Buy milk from the grocery before going home."
+
+    association :workspace
+  end
+
+  factory :comment do
+    sequence(:subject) { |n| "Comment Subject #{n}"  }
+    sequence(:body)    { |n| "Comment Body #{n}"     }
+
+    association :ticket
+    association :author, :factory => :user
   end
 
   factory :workspace do
-    name              "Some workspace"
-    description       { "Tasks for workspace #{name} go here" }
+    sequence(:name)   { |n| "Workspace #{n}" }
+    description       { |w| "Tasks for workspace #{w.name} go here" }
     archived          false
   end
 
   factory :user do |user|
-    user.email                  "user@example.com"
+    user.email                  { "user_#{rand(1000).to_s}@example.com" }
     user.password               "password"
     user.password_confirmation  "password"
   end

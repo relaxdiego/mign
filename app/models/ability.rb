@@ -49,5 +49,9 @@ class Ability
         ticket.workspace.members.include? user
       end
     end
+
+    can :create, Comment do |comment|
+      comment.ticket.workspace.members.include?(user)
+    end
   end
 end

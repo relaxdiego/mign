@@ -167,6 +167,11 @@ GEM
       ffi (~> 1.0.9)
       json_pure
       rubyzip
+    shoulda (3.0.1)
+      shoulda-context (~> 1.0.0)
+      shoulda-matchers (~> 1.0.0)
+    shoulda-context (1.0.0)
+    shoulda-matchers (1.0.0)
     simplecov (0.6.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.5.3)
@@ -220,6 +225,7 @@ DEPENDENCIES
   rb-fsevent
   rspec-rails
   sass-rails (~> 3.2.3)
+  shoulda
   simplecov
   spork-rails
   syntax

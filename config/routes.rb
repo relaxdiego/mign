@@ -5,7 +5,11 @@ Mign::Application.routes.draw do
 
   devise_for :users
 
-  resources :tickets
+  resources :tickets do
+    resources :comments
+  end
+
+  resources :comments
 
   resources :memberships
 

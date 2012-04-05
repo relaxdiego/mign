@@ -1,6 +1,11 @@
 #==========================
 # GIVENs
 #==========================
+Given /^[Aa] workspace exists$/ do
+  @workspace = Factory.create(:workspace)
+  @old_workspace_attr_values = @workspace.attributes
+end
+
 Given /^[Aa] workspace named (.+) exists$/ do |workspace_name|
   @workspace = Factory.create(:workspace, :name => workspace_name)
   @old_workspace_attr_values = @workspace.attributes
@@ -27,6 +32,11 @@ Given /^(?:[Hh]e|[Ss]he) is a member of the following workspaces$/ do |table|
     workspace.add_member(@user)
   end
 end
+
+Given /^(?:[Hh]e|[Ss]he) is a member of the workspace$/ do
+  @workspace.add_member(@user)
+end
+
 
 #==========================
 # WHENs

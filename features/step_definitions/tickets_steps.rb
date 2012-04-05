@@ -2,6 +2,11 @@
 # GIVENs
 #==========================
 
+Given /^[Aa] ticket exists in that workspace$/ do
+  attrs = { :workspace_id => @workspace.id }
+  @ticket = Factory.create(:ticket, attrs)
+end
+
 Given /^That workspace has the following tickets$/ do |table|
   tickets = table.hashes
 
