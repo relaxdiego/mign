@@ -21,7 +21,7 @@
 
 <ul id="comments">
   <% @ticket.comments.all(:order => :created_at).each do |comment| %>
-    <li><%= comment.subject %><br><%= comment.body %></li>
+    <li><%= comment.author.full_name %>: <%= comment.subject %><br><%= comment.body %></li>
   <% end %>
   <%= render :partial => 'comments/form' %>
 </ul>
