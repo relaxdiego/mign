@@ -18,6 +18,13 @@ class MignPage
     end
   end
 
+  def self.has_html_element_id(html_element_id)
+    html_element_id = html_element_id.to_s.gsub!(/^\#?/, '')
+    send :define_method, "has_#{ html_element_id }_html_element?".gsub(/-/, '_') do
+      return has_html_element?(html_element_id), html_element_id
+    end
+  end
+
   attr_reader :path
   default_submit_button 'submit'
 
@@ -52,7 +59,11 @@ class MignPage
   #=====================
 
   def is_current?
-    session.current_path == self.path
+    session.current_path == self.path && missing_html_elements.length == 0
+  end
+
+  def has_html_element?(html_element_id)
+    session.has_selector? "##{ html_element_id.to_s }"
   end
 
   #=====================
@@ -61,7 +72,13 @@ class MignPage
 
   def should_be_current
     unless is_current?
-      raise PageAssertionError, "Expected #{ url } but #{ session.current_url } was returned."
+      missing = missing_html_elements
+
+      error = "Expected #{ self.url } but another page was returned."
+      error << " URL: #{ session.current_url }." if session.current_url != self.url
+      error << " Missing HTML ID#{ missing.length > 1 ? 's' : '' }: #{ missing.join(', ') }" if missing.length > 0
+
+      raise PageAssertionError, error
     end
   end
 
@@ -83,6 +100,15 @@ class MignPage
 
   def url
     "#{ session.current_host }#{ path }"
+  end
+
+  def missing_html_elements
+    missing = []
+    methods.select{ |m| m.to_s =~ /^has_.+_html_element\?$/ }.each do |method_name|
+      not_missing, element_name = send(method_name)
+      missing << element_name unless not_missing
+    end
+    missing
   end
 
   private
