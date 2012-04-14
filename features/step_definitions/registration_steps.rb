@@ -16,6 +16,7 @@ When /^someone tries to register with (.*), (.*), (.*), (.*), and (.*)$/ do |fir
   }
 
   @page = RegistrationPage.visit
+  @page.should_be_current
   data.each do |field_id, value|
     @page.fill_in field_id, value
   end
