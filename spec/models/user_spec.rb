@@ -8,4 +8,10 @@ describe User do
 
     user.owned_workspaces.include?(workspace).should be_true
   end
+
+  it "should validate presence of first_name" do
+    user = User.new(:first_name => nil)
+    user.should_not be_valid
+    user.should have(1).error_on(:first_name)
+  end
 end

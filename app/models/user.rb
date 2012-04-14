@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me
 
   has_many :memberships
   has_many :workspaces, :through => :memberships
@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
            :through => :memberships,
            :source => :workspace,
            :conditions => ['memberships.is_owner = ?', true]
+
+  validates_presence_of :first_name
 
   def add_to_owned_workspaces(workspace)
     owned_workspaces << workspace

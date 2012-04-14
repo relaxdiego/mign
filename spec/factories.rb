@@ -25,6 +25,7 @@ FactoryGirl.define do
 
   factory :user do |user|
     user.email                  { "user_#{rand(1000).to_s}@example.com" }
+    user.first_name             "Test User"
     user.password               "password"
     user.password_confirmation  "password"
   end
