@@ -18,10 +18,12 @@ class MignPage
     end
   end
 
-  def self.has_html_element_id(html_element_id)
-    html_element_id = html_element_id.to_s.gsub!(/^\#?/, '')
-    send :define_method, "has_#{ html_element_id }_html_element?".gsub(/-/, '_') do
-      return has_html_element?(html_element_id), html_element_id
+  def self.has_html_id(*ids)
+    ids.each do |html_element_id|
+      html_element_id = html_element_id.to_s.gsub!(/^\#?/, '')
+      send :define_method, "has_#{ html_element_id }_html_element?".gsub(/-/, '_') do
+        return has_html_element?(html_element_id), html_element_id
+      end
     end
   end
 
