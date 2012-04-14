@@ -19,13 +19,15 @@ class MignPage
     end
   end
 
-  def self.has_html_id(*ids)
-    ids.each do |html_element_id|
-      html_element_id = html_element_id.to_s.gsub!(/^\#?/, '')
-      send :define_method, "has_#{ html_element_id }_html_element?".gsub(/-/, '_') do
-        return has_html_element?(html_element_id), html_element_id
-      end
+  def self.expects_selector(selector)
+    selector = selector.to_s
+    send :define_method, "has_css_selector_#{ selector.gsub(/\W/, '_') }" do
+      return has_css_selector?(selector), selector
     end
+  end
+
+  def self.expects_selectors(*selectors)
+    selectors.each{ |selector| expects_selector(selector) }
   end
 
   attr_reader :path
@@ -62,11 +64,11 @@ class MignPage
   #=====================
 
   def is_current?
-    session.current_path == self.path && missing_html_elements.length == 0
+    session.current_path == self.path && missing_selectors.length == 0
   end
 
-  def has_html_element?(html_element_id)
-    session.has_selector? "##{ html_element_id.to_s }"
+  def has_css_selector?(selector)
+    session.has_selector? selector.to_s
   end
 
   #=====================
@@ -105,11 +107,11 @@ class MignPage
     "#{ session.current_host }#{ path }"
   end
 
-  def missing_html_elements
+  def missing_selectors
     missing = []
-    methods.select{ |m| m.to_s =~ /^has_.+_html_element\?$/ }.each do |method_name|
-      not_missing, element_name = send(method_name)
-      missing << element_name unless not_missing
+    methods.select{ |m| m.to_s =~ /^has_css_selector_.+$/ }.each do |method_name|
+      not_missing, selector = send(method_name)
+      missing << selector unless not_missing
     end
     missing
   end
