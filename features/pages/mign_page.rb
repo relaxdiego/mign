@@ -13,6 +13,7 @@ class MignPage
   end
 
   def self.default_submit_button(button_id)
+    button_id.gsub!(/^#/, '')
     send :define_method, :submit_button_id do
       button_id
     end
