@@ -7,19 +7,18 @@ Feature: Logging In
       | relaxdiego@gmail.com | as4943dladdsf |
     When someone attempts to log in with the following credentials: <email>, <password>
     Then he will be redirected to the <page> page
-     And the system will display '<message>'
 
     Examples: Valid Credentials
-      | email                | password       | page  | message                   |
-      | relaxdiego@gmail.com | as4943dladdsf  | home  | Signed in successfully    |
-      | RELAXDIEGO@GMAIL.COM | as4943dladdsf  | home  | Signed in successfully    |
+      | email                | password       | page        |
+      | relaxdiego@gmail.com | as4943dladdsf  | workspaces  |
+      | RELAXDIEGO@GMAIL.COM | as4943dladdsf  | workspaces  |
 
     Examples: Invalid Credentials
-      | email                | password       | page  | message                   |
-      | relaxdiego@gmail.com | wrong-password | login | Invalid email or password |
-      | aaaaaaaaaa@gmail.com | as4943dladdsf  | login | Invalid email or password |
-      |                      |                | login | Invalid email or password |
-      | relaxdiego@gmail.com |                | login | Invalid email or password |
+      | email                | password       | page  |
+      | relaxdiego@gmail.com | wrong-password | login |
+      | aaaaaaaaaa@gmail.com | as4943dladdsf  | login |
+      |                      |                | login |
+      | relaxdiego@gmail.com |                | login |
 
 
   Scenario Outline: Someone attempts to access a secure page without logging in
@@ -35,7 +34,7 @@ Feature: Logging In
   Scenario: User tries to visit the login page when he's already logged in
     Given a user is logged in
      When he visits the log in page
-     Then he will be redirected to his home page
+     Then he will be redirected to the workspaces page
 
 
   Scenario Outline: User logs in after being redirected
