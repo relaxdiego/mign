@@ -45,6 +45,7 @@ end
 guard 'cucumber', :cli => "--drb --require features/", :all_after_pass => true do
   watch(%r{^features/.+\.feature$})
   watch(%r{^features/support/.+$})                      { 'features' }
+  watch(%r{^features/pages/.+\.rb$})                      { 'features' }
   watch(%r{^features/step_definitions/(.+)_steps\.rb$}) do |m|
     if m[1] == 'memberships'
       'features/categories/workspaces'
